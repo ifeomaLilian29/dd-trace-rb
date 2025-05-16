@@ -1,0 +1,9 @@
+module Datadog
+  module Tracing
+    module Transport
+      module HTTP
+        def self?.default: (agent_settings: untyped, ?logger: untyped, ?api_version: untyped?, ?headers: untyped?) ?{ (untyped) -> untyped } -> untyped
+      end
+    end
+  end
+end

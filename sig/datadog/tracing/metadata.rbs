@@ -1,0 +1,10 @@
+module Datadog
+  module Tracing
+    module Metadata
+      include Metadata::Tagging
+      include Metadata::MetastructTagging
+      include Metadata::Errors
+      prepend Metadata::Analytics
+    end
+  end
+end

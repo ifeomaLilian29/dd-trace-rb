@@ -1,0 +1,81 @@
+module Datadog
+  module Core
+    module Remote
+      module Transport
+        module HTTP
+          # HTTP transport behavior for remote configuration
+          module Config
+            # Response from HTTP transport for remote configuration
+            class Response
+              @empty: untyped
+
+              @roots: untyped
+
+              @targets: untyped
+
+              @target_files: untyped
+
+              @client_configs: untyped
+
+              include Datadog::Core::Transport::HTTP::Response
+
+              include Core::Remote::Transport::Config::Response
+
+              def initialize: (untyped http_response, ?::Hash[untyped, untyped] options) -> void
+
+              def inspect: () -> ::String
+              class KeyError < StandardError
+                def initialize: (untyped key) -> void
+              end
+              class TypeError < StandardError
+                def initialize: (untyped type, untyped value) -> void
+              end
+              class DecodeError < StandardError
+                def initialize: (untyped key, untyped value) -> void
+              end
+              class ParseError < StandardError
+                def initialize: (untyped key, untyped value) -> void
+              end
+            end
+
+            # Extensions for HTTP client
+            module Client : HTTP::Client
+              def send_config_payload: (untyped request) -> untyped
+            end
+
+            module API
+              # Extensions for HTTP API Spec
+              module Spec
+                @config: untyped
+
+                attr_reader config: untyped
+
+                def config=: (untyped endpoint) -> untyped
+
+                def send_config: (untyped env) { (?) -> untyped } -> untyped
+              end
+
+              # Extensions for HTTP API Instance
+              module Instance
+                def send_config: (untyped env) -> untyped
+              end
+
+              # Endpoint for remote configuration
+              class Endpoint < Datadog::Core::Transport::HTTP::API::Endpoint
+                @encoder: untyped
+
+                HEADER_CONTENT_TYPE: "Content-Type"
+
+                attr_reader encoder: untyped
+
+                def initialize: (untyped path, untyped encoder) -> void
+
+                def call: (untyped env) { (?) -> untyped } -> untyped
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

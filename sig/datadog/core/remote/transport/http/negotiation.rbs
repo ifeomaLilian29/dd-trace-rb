@@ -1,0 +1,53 @@
+module Datadog
+  module Core
+    module Remote
+      module Transport
+        module HTTP
+          module Negotiation
+            class Response
+              @version: untyped
+
+              @endpoints: untyped
+
+              @config: untyped
+
+              @span_events: untyped
+
+              include Datadog::Core::Transport::HTTP::Response
+
+              include Core::Remote::Transport::Negotiation::Response
+
+              def initialize: (untyped http_response, ?::Hash[untyped, untyped] options) -> void
+            end
+
+            module Client : Remote::Transport::HTTP::Client
+              def send_info_payload: (untyped request) -> untyped
+            end
+
+            module API
+              module Spec
+                @info: untyped
+
+                attr_reader info: untyped
+
+                def info=: (untyped endpoint) -> untyped
+
+                def send_info: (untyped env) { (?) -> untyped } -> untyped
+              end
+
+              module Instance
+                def send_info: (untyped env) -> untyped
+              end
+
+              class Endpoint < Datadog::Core::Transport::HTTP::API::Endpoint
+                def initialize: (untyped path) -> void
+
+                def call: (untyped env) { (?) -> untyped } -> untyped
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

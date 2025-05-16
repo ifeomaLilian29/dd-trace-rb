@@ -1,0 +1,15 @@
+module Datadog
+  module Core
+    module Configuration
+      def health_metrics: -> Diagnostics::Health::Metrics
+
+      def tracer: () -> Datadog::Tracing::Tracer
+
+      def logger: () -> Datadog::Core::Logger
+
+      def configuration: () -> untyped # The DSL methods have to be explicitly declared for this to be typed
+
+      def config_init_logger: () -> Datadog::Core::Logger
+    end
+  end
+end

@@ -1,0 +1,11 @@
+module Datadog
+  module AppSec
+    module Contrib
+      module Rack
+        module Ext
+          IDENTITY_COLLECTABLE_REQUEST_HEADERS: ::Array[::String]
+        end
+      end
+    end
+  end
+end
